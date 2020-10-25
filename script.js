@@ -1,8 +1,14 @@
 const time = document.getElementById('time'),
+	quote = document.getElementById('quote'),
 	date = document.getElementById('date'),
 	greeting = document.getElementById('greeting'),
 	name = document.getElementById('name'),
-	focus = document.getElementById('focus');
+	tasks = document.getElementById('tasks'),
+	focus = document.getElementById('focus'),
+	btnLeftSm = document.getElementById('btn-small-left'),
+	btnRightSm = document.getElementById('btn-small-right'),
+	btnLeft = document.getElementById('btn-left'),
+	btnRight = document.getElementById('btn-right');
 
 const showTime = () => {
 	let today = new Date(),
@@ -82,7 +88,6 @@ const showTime = () => {
 	setTimeout(showTime, 1000);
 };
 
-
 const addZero = (n) => {
 	if(n < 10) {
 		return '0' + n;
@@ -96,21 +101,20 @@ const changeBgAndGreet = () => {
 		hours = today.getHours();
 
 	if(6 <= hours && hours < 12) {
-		document.body.style.backgroundImage = "url('./assets/morning/sun.jpg')";
+		document.body.style.backgroundImage = "url('./assets/morning/1.jpg')";
 		greeting.textContent = 'Good Morning,';
 	} else if (12 <= hours && hours < 18) {
-		document.body.style.backgroundImage = "url('./assets/day/house.jpg')";
+		document.body.style.backgroundImage = "url('./assets/day/1.jpg')";
 		greeting.textContent = 'Good Afternoon,';
-	} else if (18 <= hours && hours < 23) {
-		document.body.style.backgroundImage = "url('./assets/evening/sunset.jpg')";
+	} else if (18 <= hours && hours < 24) {
+		document.body.style.backgroundImage = "url('./assets/evening/1.jpg')";
 		greeting.textContent = 'Good Evening,';
-		document.body.style.color = 'white';
+		document.body.classList.toggle('active-text');
 	} else {
-		document.body.style.backgroundImage = "url('./assets/night/stars.jpg')";
+		document.body.style.backgroundImage = "url('./assets/night/1.jpg')";
 		greeting.textContent = 'Good Night,';
-		document.body.style.color = 'white';
+		document.body.classList.toggle('active-text');
 	}
-
 };
 
 const getName = () => {
@@ -144,7 +148,6 @@ const setName = (e) => {
 	} else {
 	  	localStorage.setItem('name', e.target.innerText);
 	}
-  console.log(e);
 };
 
 const getFocus = () => {

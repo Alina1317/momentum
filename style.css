@@ -6,17 +6,134 @@
 
 body {
   font-family: 'Cutive Mono', monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   height: 100vh;
+}
 
+#citate {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  display: flex;
+  max-width: 50%;
+  min-height: 10%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5rem 0 11rem 0;
+
+}
+
+#quote {
+  margin: 0 1rem;
+}
+
+#btn-small-left,
+#btn-small-right {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#btn-small-left {
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(-135deg);
+}
+
+#btn-small-right {
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+  transform: rotate(45deg);
+}
+
+#btn-small-left:hover,
+#btn-small-right:hover {
+  opacity: .5
+}
+
+#wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 95%;
+}
+
+#btn-left,
+#btn-right {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#btn-left {
+  width: 40px;
+  height: 40px;
+  border-top: 4px solid #fff;
+  border-right: 4px solid #fff;
+  transform: rotate(-135deg);
+}
+
+#btn-right {
+  width: 40px;
+  height: 40px;
+  border-top: 4px solid #fff;
+  border-right: 4px solid #fff;
+  transform: rotate(45deg);
+}
+
+#btn-left:hover,
+#btn-right:hover {
+  opacity: .5
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 #time {
   font-size: 8.5rem;
+}
+
+#quote,
+#time,
+#date,
+#greeting,
+#name,
+#tasks,
+#focus {
+  text-shadow: 0.5px 0.5px white, 
+  0.5px 0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px 0.5px white, 
+  0.5px -0.5px white, 
+  -0.5px 0.5px white, 2px 
+  -0.5px white, 
+  -0.5px -0.5px 0.5px rgba(0,0,0,.3), 
+  -0.5px 0.5px 0.5px rgba(0,0,0,.3), 
+  0.5px 0.5px 0.5px rgba(0,0,0,.3), 
+ 0.5px -0.5px 0.5px rgba(0,0,0,.3);
+}
+
+.active-text {
+   text-shadow: 0.5px 0.5px white, 
+  0.5px 0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px 0.5px white, 
+  0.5px -0.5px white, 
+  -0.5px 0.5px white, 2px 
+  -0.5px white, 
+  -0.5px -0.5px 0.5px rgba(0,0,0,.3), 
+  -0.5px 0.5px 0.5px rgba(0,0,0,.3), 
+  0.5px 0.5px 0.5px rgba(0,0,0,.3), 
+ 0.5px -0.5px 0.5px rgba(0,0,0,.3);
 }
 
 #date {
@@ -25,7 +142,7 @@ body {
 }
 
 #name {
-  display: inline-flex
+  display: inline-flex;
 }
 
 h1 {
