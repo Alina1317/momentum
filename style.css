@@ -13,34 +13,32 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   display: flex;
-  max-width: 50%;
-  min-height: 10%;
+  max-width: 49%;
+  min-height: 15%;
   justify-content: space-around;
   align-items: center;
-  margin: 5rem 0 11rem 0;
-
+  margin: 5rem 0 11rem 3rem;
 }
 
 #quote {
-  margin: 0 1rem;
+ margin: 1rem;
 }
 
-#btn-small-left,
+#quote-text {
+  font-size: 1.4rem;
+  margin-bottom: 0.7rem;
+}
+
+#quote-autor {
+  font-size: 1.2rem; 
+}
+
 #btn-small-right {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-#btn-small-left {
-  width: 20px;
-  height: 20px;
-  border-top: 2px solid #fff;
-  border-right: 2px solid #fff;
-  transform: rotate(-135deg);
-}
-
-#btn-small-right {
+  outline: none;
+  margin-right: 1rem;
   width: 20px;
   height: 20px;
   border-top: 2px solid #fff;
@@ -48,7 +46,6 @@ body {
   transform: rotate(45deg);
 }
 
-#btn-small-left:hover,
 #btn-small-right:hover {
   opacity: .5
 }
@@ -64,6 +61,7 @@ body {
 #btn-left,
 #btn-right {
   background: none;
+  outline: none;
   border: none;
   cursor: pointer;
 }

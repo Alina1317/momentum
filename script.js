@@ -5,10 +5,13 @@ const time = document.getElementById('time'),
 	name = document.getElementById('name'),
 	tasks = document.getElementById('tasks'),
 	focus = document.getElementById('focus'),
-	btnLeftSm = document.getElementById('btn-small-left'),
 	btnRightSm = document.getElementById('btn-small-right'),
 	btnLeft = document.getElementById('btn-left'),
 	btnRight = document.getElementById('btn-right');
+	let changeImg = 1;
+	let txt = document.getElementById('quote-text'),
+		autor = document.getElementById('quote-autor');
+
 
 const showTime = () => {
 	let today = new Date(),
@@ -18,6 +21,10 @@ const showTime = () => {
 		dayOfWeek = today.getDay(),
 		dateOfWeek = today.getDate(),
 		monthOfYear = today.getMonth();
+
+		if (min === 0 && sec === 0) {
+			changeBgAndGreet();
+		}
 
 		switch(dayOfWeek) {
 			case 0:
@@ -101,19 +108,25 @@ const changeBgAndGreet = () => {
 		hours = today.getHours();
 
 	if(6 <= hours && hours < 12) {
-		document.body.style.backgroundImage = "url('./assets/morning/1.jpg')";
+		document.body.style.backgroundImage = `url('./img/morning/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Morning,';
 	} else if (12 <= hours && hours < 18) {
-		document.body.style.backgroundImage = "url('./assets/day/1.jpg')";
+		document.body.style.backgroundImage = `url('./img/day/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Afternoon,';
 	} else if (18 <= hours && hours < 24) {
-		document.body.style.backgroundImage = "url('./assets/evening/1.jpg')";
+		document.body.style.backgroundImage = `url('./img/evening/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Evening,';
 		document.body.classList.toggle('active-text');
 	} else {
-		document.body.style.backgroundImage = "url('./assets/night/1.jpg')";
+		document.body.style.backgroundImage = `url('./img/night/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Night,';
 		document.body.classList.toggle('active-text');
+	}
+
+	if(changeImg >= 6) {
+		changeImg = 1;
+	} else {
+		changeImg++;
 	}
 };
 
@@ -165,7 +178,7 @@ const setFocus = (e) => {
     	if (e.type === 'blur') {
 	    	if (e.target.textContent == '') {
 	    		if (localStorage.getItem('focus') !== '' && localStorage.getItem('focus') !== null) {
-	    			e.target.textContent=localStorage.getItem('focus');
+	    			e.target.textContent = localStorage.getItem('focus');
 	    		} else {
 	    			e.target.textContent = '[Enter Name]';
 	    		}
@@ -182,12 +195,37 @@ const setFocus = (e) => {
 	    localStorage.setItem('focus', e.target.innerText);
 	}
 };
+
+btnRight.onclick = () => {
+		changeBgAndGreet();
+};
+btnLeft.onclick = () => {
+		if(changeImg === 1) {
+			changeImg = 7
+		}
+		if(changeImg < 3) {
+			changeImg = 8;
+		} 
+		changeImg -= 2;
+		changeBgAndGreet();
+};
+
+async function showQuote() {
+  let response = await fetch('https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en');
+  let word = await response.json();
+
+  txt.innerHTML = word.quoteText;
+  autor.innerHTML = word.quoteAuthor;
+}
+showQuote();
+
 name.addEventListener('click', setName);
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('click', setFocus);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+btnRightSm.addEventListener('click', showQuote)
 
 showTime();
 changeBgAndGreet();
