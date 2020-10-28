@@ -270,6 +270,9 @@ const setCity = (e) => {
 	    		} else {
 	    			e.target.textContent = '[Enter City]';
 	    		}
+	    	} else {
+	    		localStorage.setItem('city', e.target.innerText);
+	    		getWeather();
 	    	}
 		}
 	}
@@ -278,6 +281,7 @@ const setCity = (e) => {
 	    if (e.which == 13 || e.keyCode == 13) {
 	    	localStorage.setItem('city', e.target.innerText);
 	    	city.blur();
+	    	getWeather();
 	    }
 	} else {
 	    localStorage.setItem('city', e.target.innerText);
