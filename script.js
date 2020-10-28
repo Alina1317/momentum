@@ -10,9 +10,13 @@ const time = document.getElementById('time'),
 	btnRight = document.getElementById('btn-right');
 	let changeImg = 1;
 	let txt = document.getElementById('quote-text'),
-		autor = document.getElementById('quote-autor');
+		autor = document.getElementById('quote-autor'),
+		city = document.getElementById('city'),
+		weatherIcon = document.getElementById('weather-icon'),
+		weatherTemp = document.getElementById('weather-temp'),
+		weatherDesc = document.getElementById('weather-desc');
 
-
+//Date and time
 const showTime = () => {
 	let today = new Date(),
 		hour = today.getHours(),
@@ -95,6 +99,7 @@ const showTime = () => {
 	setTimeout(showTime, 1000);
 };
 
+//add 0
 const addZero = (n) => {
 	if(n < 10) {
 		return '0' + n;
@@ -103,6 +108,7 @@ const addZero = (n) => {
 	}
 };
 
+//change baground
 const changeBgAndGreet = () => {
 	let today = new Date(),
 		hours = today.getHours();
@@ -130,6 +136,7 @@ const changeBgAndGreet = () => {
 	}
 };
 
+//Name
 const getName = () => {
 	if (localStorage.getItem('name') === null) {
 	    name.textContent = '[Enter Name]';
@@ -138,6 +145,7 @@ const getName = () => {
 	}
 };
 
+//Name
 const setName = (e) => {
 	if (e.type == 'click') {
       	e.target.textContent = null;
@@ -163,6 +171,7 @@ const setName = (e) => {
 	}
 };
 
+//Focus
 const getFocus = () => {
 	if (localStorage.getItem('focus') === null) {
 		focus.textContent = '[Enter Focus]';
@@ -171,6 +180,7 @@ const getFocus = () => {
 	}
 };
 
+//Focus
 const setFocus = (e) => {
 	if (e.type == 'click') {
       	e.target.textContent = null;
@@ -196,6 +206,7 @@ const setFocus = (e) => {
 	}
 };
 
+//click for change img`s
 btnRight.onclick = () => {
 		changeBgAndGreet();
 };
@@ -210,6 +221,7 @@ btnLeft.onclick = () => {
 		changeBgAndGreet();
 };
 
+//Quote
 async function showQuote() {
   let response = await fetch('https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en');
   let word = await response.json();
@@ -219,15 +231,71 @@ async function showQuote() {
 };
 showQuote();
 
+//Weather
+async function getWeather() {  
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=e3c57ffa6734bb968ace7f83e8a1a8a2&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data); 
+  console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
+
+  weatherIcon.className = 'weather-icon owf';
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  weatherTemp.textContent = data.weather[0].description;
+  weatherDesc.textContent = Math.floor(data.main.temp);
+}
+getWeather();
+
+//City
+const getCity = () => {
+  if (localStorage.getItem('city') === null) {
+    city.textContent = '[Enter City]';
+  } else {
+    city.textContent = localStorage.getItem('city');
+    getWeather();
+  }
+};
+
+//City
+const setCity = (e) => {
+  if (e.type == 'click') {
+      	e.target.textContent = null;
+    } else {
+    	if (e.type === 'blur') {
+	    	if (e.target.textContent == '') {
+	    		if (localStorage.getItem('city') !== '' && localStorage.getItem('city') !== null) {
+	    			e.target.textContent = localStorage.getItem('city');
+	    		} else {
+	    			e.target.textContent = '[Enter City]';
+	    		}
+	    	}
+		}
+	}
+
+	if (e.type === 'keypress') {
+	    if (e.which == 13 || e.keyCode == 13) {
+	    	localStorage.setItem('city', e.target.innerText);
+	    	city.blur();
+	    }
+	} else {
+	    localStorage.setItem('city', e.target.innerText);
+	}
+}
+
 name.addEventListener('click', setName);
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('click', setFocus);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
-btnRightSm.addEventListener('click', showQuote)
+btnRightSm.addEventListener('click', showQuote);
+city.addEventListener('click', setCity);
+city.addEventListener('keypress', setCity);
+city.addEventListener('blur', setCity);
+
 
 showTime();
 changeBgAndGreet();
 getName();
 getFocus();
+getCity();

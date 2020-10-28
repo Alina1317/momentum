@@ -3,17 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/owfont-regular.css">
+	<link href="css/style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
 	<title>Momentum</title>
 </head>
 <body>
-	<div id="citate">
-		<blockquote id="quote">
-			<h3 id="quote-text">Have no fear of perfection - you'll never reach it.</h3>
-			<p id="quote-autor">Salvador Dali</p>
-		</blockquote>
-		<button id="btn-small-right"></button>
+	<div id="container">
+		<div id="citate">
+			<blockquote id="quote">
+				<h3 id="quote-text">Have no fear of perfection - you'll never reach it.</h3>
+				<p id="quote-autor">Salvador Dali</p>
+			</blockquote>
+			<button id="btn-small-right"></button>
+		</div>
+		<div id="weather">
+			<h4 id="city" contenteditable="true">Moscow</h4>
+			<div id="weather-forecast">
+				<i id="weather-icon owf"></i>
+				<div id="weather-text">
+					<span id="weather-temp">10&#8451;</span>
+					<span id="weather-desc">Sunny</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="wrap">
 		<button id="btn-left"></button>
