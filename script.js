@@ -12,9 +12,11 @@ const time = document.getElementById('time'),
 	let txt = document.getElementById('quote-text'),
 		autor = document.getElementById('quote-autor'),
 		city = document.getElementById('city'),
-		weatherIcon = document.getElementById('weather-icon'),
+		weatherIcon = document.querySelector('.weather-icon'),
 		weatherTemp = document.getElementById('weather-temp'),
-		weatherDesc = document.getElementById('weather-desc');
+		weatherDesc = document.getElementById('weather-desc'),
+		airHumidity = document.getElementById('air-humidity'),
+		windSpeed = document.getElementById('wind-speed');
 
 //Date and time
 const showTime = () => {
@@ -233,17 +235,19 @@ showQuote();
 
 //Weather
 async function getWeather() {  
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=e3c57ffa6734bb968ace7f83e8a1a8a2&units=metric`;
-  const res = await fetch(url);
+  const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('city')}&lang=en&appid=e3c57ffa6734bb968ace7f83e8a1a8a2&units=metric`);
+  
   const data = await res.json();
   console.log(data); 
   console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
   weatherIcon.className = 'weather-icon owf';
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-  weatherTemp.textContent = data.weather[0].description;
-  weatherDesc.textContent = Math.floor(data.main.temp);
-}
+  airHumidity.textContent = `hum.${data.main.humidity}%`;
+  windSpeed.textContent = `wind ${data.wind.speed} m/s`;
+  weatherTemp.textContent = `${Math.floor(data.main.temp)}°C`;
+  weatherDesc.textContent = data.weather[0].description;
+};
 getWeather();
 
 //City
@@ -280,7 +284,7 @@ const setCity = (e) => {
 	} else {
 	    localStorage.setItem('city', e.target.innerText);
 	}
-}
+};
 
 name.addEventListener('click', setName);
 name.addEventListener('keypress', setName);

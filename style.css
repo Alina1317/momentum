@@ -15,7 +15,7 @@ body {
 #container {
   display: flex;
   justify-content: space-between;
-  margin: 5rem 3rem 9rem 3rem;
+  margin: 5rem 3rem 11rem 3rem;
 }
 
 #citate {
@@ -66,41 +66,14 @@ body {
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  max-width: 39%;
-}
-
-#forecast {
-  margin: .7rem;
 }
 
 #city {
-  display: inline-flex;
   font-size: 1.5rem;
 }
 
-#weather-forecast {
-  display: flex;
-  align-items: center;
-}
-
-.weather-icon {
-  font-size: 4rem;
-  color: #73bec9;
-  margin-right: .7rem;
-}
-
-#weather-city,
-#weather-text,
-#weather-indicator {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 #weather-temp,
-#weather-desc,
-#air-humidity,
-#wind-speed {
+#weather-desc {
   font-size: 1.2rem;
 }
 
@@ -154,38 +127,20 @@ body {
 }
 
 #quote,
-#weather {
-  color: #fff;
-  text-shadow: 0.5px 0.5px black, 
-  0.5px 0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px 0.5px black, 
-  0.5px -0.5px black, 
-  -0.5px 0.5px black, 2px 
-  -0.5px black, 
-  -0.5px -0.5px 0.5px rgba(0,0,0,.3), 
-  -0.5px 0.5px 0.5px rgba(0,0,0,.3), 
-  0.5px 0.5px 0.5px rgba(0,0,0,.3), 
- 0.5px -0.5px 0.5px rgba(0,0,0,.3);
-}
-/*#quote,
-#weather,*/
 #time,
 #date,
 #greeting,
 #name,
 #tasks,
 #focus {
-  color: #fff;
-  text-shadow: 0.5px 0.5px black, 
-  0.5px 0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px 0.5px black, 
-  0.5px -0.5px black, 
-  -0.5px 0.5px black, 2px 
-  -0.5px black, 
+  text-shadow: 0.5px 0.5px white, 
+  0.5px 0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px 0.5px white, 
+  0.5px -0.5px white, 
+  -0.5px 0.5px white, 2px 
+  -0.5px white, 
   -0.5px -0.5px 0.5px rgba(0,0,0,.3), 
   -0.5px 0.5px 0.5px rgba(0,0,0,.3), 
   0.5px 0.5px 0.5px rgba(0,0,0,.3), 
@@ -193,15 +148,14 @@ body {
 }
 
 .active-text {
-   color: #fff;
-  text-shadow: 0.5px 0.5px black, 
-  0.5px 0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px -0.5px black, 
-  -0.5px 0.5px black, 
-  0.5px -0.5px black, 
-  -0.5px 0.5px black, 2px 
-  -0.5px black, 
+   text-shadow: 0.5px 0.5px white, 
+  0.5px 0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px -0.5px white, 
+  -0.5px 0.5px white, 
+  0.5px -0.5px white, 
+  -0.5px 0.5px white, 2px 
+  -0.5px white, 
   -0.5px -0.5px 0.5px rgba(0,0,0,.3), 
   -0.5px 0.5px 0.5px rgba(0,0,0,.3), 
   0.5px 0.5px 0.5px rgba(0,0,0,.3), 
@@ -234,7 +188,7 @@ h2 {
   }
 
   #citate {
-    max-width: 51%;
+    max-width: 70%;
   }
 
   #quote-text {
@@ -279,18 +233,11 @@ h2 {
 
 @media(max-width: 468px) {
   #container {
-    flex-direction: column;
-    align-items: center;
-    margin: 2rem 1rem;
+    margin: 3rem 1rem 6rem 1rem;
   }
 
    #citate {
-    max-width: 80%;
-    margin-bottom: .7rem;
-  }
-
-  #weather {
-    max-width: 80%;
+    max-width: 60%;
   }
 
   #time {
