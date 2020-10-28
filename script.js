@@ -108,17 +108,17 @@ const changeBgAndGreet = () => {
 		hours = today.getHours();
 
 	if(6 <= hours && hours < 12) {
-		document.body.style.backgroundImage = `url('./img/morning/${changeImg}.jpg')`;
+		document.body.style.backgroundImage = `url('./assets/morning/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Morning,';
 	} else if (12 <= hours && hours < 18) {
-		document.body.style.backgroundImage = `url('./img/day/${changeImg}.jpg')`;
+		document.body.style.backgroundImage = `url('./assets/day/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Afternoon,';
 	} else if (18 <= hours && hours < 24) {
-		document.body.style.backgroundImage = `url('./img/evening/${changeImg}.jpg')`;
+		document.body.style.backgroundImage = `url('./assets/evening/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Evening,';
 		document.body.classList.toggle('active-text');
 	} else {
-		document.body.style.backgroundImage = `url('./img/night/${changeImg}.jpg')`;
+		document.body.style.backgroundImage = `url('./assets/night/${changeImg}.jpg')`;
 		greeting.textContent = 'Good Night,';
 		document.body.classList.toggle('active-text');
 	}
@@ -216,7 +216,7 @@ async function showQuote() {
 
   txt.innerHTML = word.quoteText;
   autor.innerHTML = word.quoteAuthor;
-}
+};
 showQuote();
 
 name.addEventListener('click', setName);
