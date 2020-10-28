@@ -123,12 +123,10 @@ const changeBgAndGreet = () => {
 		greeting.textContent = 'Good Afternoon,';
 	} else if (18 <= hours && hours < 24) {
 		document.body.style.backgroundImage = `url('./assets/evening/${changeImg}.jpg')`;
-		greeting.textContent = 'Good Evening,';
-		document.body.classList.toggle('active-text');
+		greeting.textContent = 'Good Evening,';	
 	} else {
 		document.body.style.backgroundImage = `url('./assets/night/${changeImg}.jpg')`;
-		greeting.textContent = 'Good Night,';
-		document.body.classList.toggle('active-text');
+		greeting.textContent = 'Good Night,';	
 	}
 
 	if(changeImg >= 6) {
