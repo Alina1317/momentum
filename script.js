@@ -223,11 +223,12 @@ btnLeft.onclick = () => {
 
 //Quote
 async function showQuote() {
-  let response = await fetch('https://cors-anywhere.herokuapp.com/https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en');
+  let response = await fetch('https://favqs.com/api/qotd');
   let word = await response.json();
+  console.log(word);
 
-  txt.innerHTML = word.quoteText;
-  autor.innerHTML = word.quoteAuthor;
+  txt.innerHTML = word.quote.body;
+  autor.innerHTML = word.quote.author;
 };
 showQuote();
 
