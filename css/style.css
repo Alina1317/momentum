@@ -198,6 +198,11 @@ h2 {
   opacity: 0.8;
 }
 
+.error {
+  color: red;
+  font-weight: bold;
+}
+
 @media(max-width: 768px) {
   #container {
     margin: 3rem 1rem 9rem 1rem;

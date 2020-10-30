@@ -225,7 +225,7 @@ btnLeft.onclick = () => {
 async function showQuote() {
   let response = await fetch('https://favqs.com/api/qotd');
   let word = await response.json();
-  console.log(word);
+  // console.log(word);
 
   txt.innerHTML = word.quote.body;
   autor.innerHTML = word.quote.author;
@@ -235,17 +235,23 @@ showQuote();
 //Weather
 async function getWeather() {  
   const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${localStorage.getItem('city')}&lang=en&appid=e3c57ffa6734bb968ace7f83e8a1a8a2&units=metric`);
-  
   const data = await res.json();
-  console.log(data); 
-  console.log(data.weather[0].id, data.weather[0].description, data.main.temp);
 
+if(data.main) {
   weatherIcon.className = 'weather-icon owf';
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   airHumidity.textContent = `hum.${data.main.humidity}%`;
   windSpeed.textContent = `wind ${data.wind.speed} m/s`;
   weatherTemp.textContent = `${Math.floor(data.main.temp)}°C`;
   weatherDesc.textContent = data.weather[0].description;
+} else if(data.cod === '404') {
+	weatherIcon.classList = '';
+	airHumidity.textContent = '';
+	windSpeed.textContent = '';
+	weatherTemp.textContent = '';
+	weatherDesc.innerHTML = `<span class="error"> Error: ${data.message}</span>`;
+}
+
 };
 getWeather();
 
@@ -284,9 +290,7 @@ const setCity = (e) => {
 	    	city.blur();
 	    	getWeather();
 	    }
-	} else {
-	    localStorage.setItem('city', e.target.innerText);
-	}
+	} 
 };
 
 name.addEventListener('click', setName);
